@@ -1,9 +1,9 @@
 import { unstable_noStore as noStore } from "next/cache";
 
-import * as z from "zod";
-import { getCourseSchema, getCoursesSchema } from "../validation/course";
-import { Course } from "@prisma/client";
 import db from "../db";
+import * as z from "zod";
+import { Course } from "@prisma/client";
+import { getCourseSchema, getCoursesSchema } from "../validation/course";
 
 export async function getCourses(rawInput: z.infer<typeof getCoursesSchema>) {
   noStore();
