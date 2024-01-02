@@ -33,7 +33,7 @@ const CourseCard = ({ course, user }: CourseCardProps) => {
   const [isPending, startTransition] = useTransition();
 
   const isEnrolled = course.users.find(
-    (userAtCourse) => userAtCourse.id === user.id
+    (userAtCourse) => userAtCourse.id === user?.id
   );
 
   const onClick = () => {
