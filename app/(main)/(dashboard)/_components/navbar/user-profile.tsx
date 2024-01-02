@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { DoorOpen, LogOut, UserIcon } from "lucide-react";
+import { DoorOpen, UserIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 interface UserProfileProps {
@@ -37,7 +37,7 @@ const UserProfile = ({ user }: UserProfileProps) => {
         align="end"
       >
         <DropdownMenuLabel>
-          <p className="text-xs font-normal text-gray-400">{user.email}</p>
+          <p className="text-xs font-normal text-gray-400">{user?.email}</p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-neutral-100" />
         <DropdownMenuGroup>

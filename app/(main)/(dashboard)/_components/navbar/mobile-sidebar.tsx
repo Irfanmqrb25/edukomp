@@ -9,9 +9,8 @@ import ThemeToggle from "@/app/(main)/(landing-page)/_components/navbar/theme-to
 
 import { cn } from "@/lib/utils";
 import { menu } from "../sidebar/menu";
-import { AlignLeft, DoorOpen, GraduationCap } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 import { signOut } from "next-auth/react";
+import { AlignLeft, DoorOpen, GraduationCap } from "lucide-react";
 
 const MobileSidebar = () => {
   const router = useRouter();
