@@ -9,14 +9,14 @@ const MyCoursesPage = async () => {
 
   const myCourses = await db.course.findMany({
     where: {
-      users: {
+      enrollments: {
         some: {
-          id: user?.id,
+          userId: user?.id,
         },
       },
     },
     include: {
-      users: true,
+      enrollments: true,
     },
   });
 

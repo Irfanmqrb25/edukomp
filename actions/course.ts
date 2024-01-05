@@ -13,16 +13,10 @@ export async function enrollCourse(courseId: string) {
     return new Error("Unauthorized");
   }
 
-  await db.course.update({
-    where: {
-      id: courseId,
-    },
+  await db.enrollment.create({
     data: {
-      users: {
-        connect: {
-          id: user.id,
-        },
-      },
+      userId: user.id,
+      courseId,
     },
   });
 
@@ -36,16 +30,21 @@ export async function unenrollCourse(courseId: string) {
     return new Error("Unauthorized");
   }
 
-  await db.course.update({
+  const isOwner = await db.enrollment.findFirst({
     where: {
-      id: courseId,
+      userId: user.id,
+      courseId,
     },
-    data: {
-      users: {
-        disconnect: {
-          id: user.id,
-        },
-      },
+  });
+
+  if (!isOwner) {
+    return new Error("Unauthorized");
+  }
+
+  await db.enrollment.deleteMany({
+    where: {
+      userId: isOwner.userId,
+      courseId: isOwner.courseId,
     },
   });
 

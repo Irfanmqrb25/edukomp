@@ -1,12 +1,8 @@
-import { Suspense } from "react";
-import { unstable_cache as cache } from "next/cache";
 import { unstable_noStore as noStore } from "next/cache";
 
 import CoursePageClient from "./client";
 import Wrapper from "../_components/wrapper";
 
-import db from "@/lib/db";
-import { Course } from "@prisma/client";
 import getCurrentUser from "@/actions/getCurrentUser";
 import { coursesSearchParamsSchema } from "@/lib/validation/course";
 import { getCourses } from "@/lib/fetcher/course";

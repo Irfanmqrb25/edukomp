@@ -26,7 +26,7 @@ const DetailCoursePage = async ({
       id: params.courseId,
     },
     include: {
-      users: true,
+      enrollments: true,
     },
   });
 
@@ -60,6 +60,7 @@ const DetailCoursePage = async ({
                 alt={course?.title as string}
                 fill
                 className="object-cover rounded-md"
+                loading="lazy"
               />
             </AspectRatio>
           </div>
@@ -79,7 +80,7 @@ const DetailCoursePage = async ({
             <div>
               <p className="text-[10px] lg:text-[12px]">Students</p>
               <p className="text-[12px] lg:text-sm font-semibold">
-                {course?.users.length}
+                {course?.enrollments?.length}
               </p>
             </div>
           </div>

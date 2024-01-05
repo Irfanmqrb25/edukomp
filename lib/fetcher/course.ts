@@ -40,7 +40,7 @@ export async function getCourses(rawInput: z.infer<typeof getCoursesSchema>) {
           mentor: true,
           createdAt: true,
           updatedAt: true,
-          users: true,
+          enrollments: true,
         },
         orderBy: {
           [column ?? "createdAt"]: order ?? "desc",

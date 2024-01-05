@@ -27,7 +27,7 @@ model User {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
-  enrolledCourse  Course[]
+  enrollments     enrollment[]
 }
 
 enum DifficultyCourse {
@@ -50,5 +50,19 @@ model Course {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
-  users           User[]
+  enrollments     enrollment[]
+}
+
+model enrollment {
+  id              String    @id @default(uuid())
+  createdAt       DateTime  @default(now())
+
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseId        String
+  course          Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([courseId])
 }

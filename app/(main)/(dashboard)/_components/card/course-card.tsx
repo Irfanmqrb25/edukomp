@@ -18,22 +18,24 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { Course, User } from "@prisma/client";
+import { Course, User, enrollment } from "@prisma/client";
 import { enrollCourse, unenrollCourse } from "@/actions/course";
 
 interface CourseCardProps {
   course: Course & {
-    users: User[];
+    enrollments: enrollment[];
   };
-  user: User;
+  user: User & {
+    enrollments: enrollment[];
+  };
 }
 
 const CourseCard = ({ course, user }: CourseCardProps) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const isEnrolled = course.users.find(
-    (userAtCourse) => userAtCourse.id === user?.id
+  const isEnrolled = user?.enrollments?.find(
+    (enrollment) => enrollment.courseId === course.id
   );
 
   const onClick = () => {
@@ -76,6 +78,7 @@ const CourseCard = ({ course, user }: CourseCardProps) => {
           width={160}
           height={130}
           className="object-cover h-full w-full"
+          loading="lazy"
         />
       </CardHeader>
       <CardContent className="p-0 space-y-6 lg:space-y-4 w-full">
@@ -105,7 +108,7 @@ const CourseCard = ({ course, user }: CourseCardProps) => {
           <div className="flex items-center gap-4 flex-wrap">
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <Users className="w-4 h-4" />
-              <p className="">{course.users.length} Students</p>
+              <p className="">{course.enrollments.length} Students</p>
             </div>
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
               <BarChart3 className="w-4 h-4" />

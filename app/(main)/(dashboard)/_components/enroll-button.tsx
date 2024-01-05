@@ -6,21 +6,23 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 import { toast } from "sonner";
-import { Course, User } from "@prisma/client";
+import { Course, User, enrollment } from "@prisma/client";
 import { ArrowUpRight, RotateCcw } from "lucide-react";
 import { enrollCourse, unenrollCourse } from "@/actions/course";
 
 interface EnrollButtonProps {
-  course: Course & { users: User[] };
-  user: User;
+  course: Course;
+  user: User & {
+    enrollments: enrollment[];
+  };
 }
 
 const EnrollButton = ({ course, user }: EnrollButtonProps) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const isEnrolled = course?.users.find(
-    (userAtCourse) => userAtCourse.id === user.id
+  const isEnrolled = user?.enrollments?.find(
+    (enrollment) => enrollment.courseId === course.id
   );
 
   const onClick = () => {

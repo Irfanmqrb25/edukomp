@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useId } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 
 import CourseCard from "../_components/card/course-card";
 import { PaginationButton } from "../_components/pagination-button";
@@ -14,24 +14,18 @@ interface CoursePageClientProps {
   };
   user: User;
   pageCount: number;
-  category?: Course["category"];
 }
 
 const CoursePageClient = ({
   courses,
   user,
   pageCount,
-  category,
 }: CoursePageClientProps) => {
-  const id = useId();
-  const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   // Search params
   const page = searchParams?.get("page") ?? "1";
   const per_page = searchParams?.get("per_page") ?? "8";
-  const categoryParam = searchParams?.get("category");
 
   // Create query string
   const createQueryString = useCallback(
@@ -55,7 +49,11 @@ const CoursePageClient = ({
     <div className="space-y-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
         {courses.map((course) => (
-          <CourseCard key={course.id} course={course as any} user={user!} />
+          <CourseCard
+            key={course.id}
+            course={course as any}
+            user={user as any}
+          />
         ))}
       </div>
       {courses.length ? (
