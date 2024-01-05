@@ -1,6 +1,9 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface CategoriesCardProps {
   name: string;
@@ -15,12 +18,15 @@ const CategoriesCard = ({
   href,
   className,
 }: CategoriesCardProps) => {
+  const router = useRouter();
+
   return (
     <Card
       className={cn(
         "p-4 flex flex-col w-full items-center justify-center gap-4 hover:-translate-y-1 transition-all duration-500 group cursor-pointer text-white shadow-sm",
         className
       )}
+      onClick={() => router.push(href)}
     >
       <Image
         src={imageUrl}

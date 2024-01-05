@@ -7,7 +7,7 @@ export const getCourseSchema = z.object({
 export const getCoursesSchema = z.object({
   limit: z.number().default(10),
   offset: z.number().default(0),
-  categories: z.string().optional().nullable(),
+  category: z.string().optional().nullable(),
   sort: z.string().optional().nullable(),
   price_range: z.string().optional().nullable(),
 });
@@ -23,6 +23,6 @@ export const searchParamsSchema = z.object({
 export const coursesSearchParamsSchema = searchParamsSchema
   .omit({ from: true, to: true })
   .extend({
-    categories: z.string().optional(),
+    category: z.string().optional(),
     price_range: z.string().optional(),
   });

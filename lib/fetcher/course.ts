@@ -14,15 +14,14 @@ export async function getCourses(rawInput: z.infer<typeof getCoursesSchema>) {
       "asc" | "desc" | undefined
     ]) ?? ["createdAt", "desc"];
     const [minPrice, maxPrice] = input.price_range?.split("-") ?? [];
-    const categories =
-      (input.categories?.split(".") as Course["category"][]) ?? [];
+    // const category = input?.category!;
 
     const { items, count } = await db.$transaction(async (tx) => {
       const items = await db.course.findMany({
         take: input.limit,
         skip: input.offset,
         where: {
-          category: categories.length > 0 ? { in: categories } : undefined,
+          category: input.category || undefined,
           price: {
             gte: minPrice ? Number(minPrice) : undefined,
             lte: maxPrice ? Number(maxPrice) : undefined,
@@ -50,7 +49,7 @@ export async function getCourses(rawInput: z.infer<typeof getCoursesSchema>) {
 
       const count = await tx.course.count({
         where: {
-          category: categories.length > 0 ? { in: categories } : undefined,
+          category: input.category || undefined,
           price: {
             gte: minPrice ? Number(minPrice) : undefined,
             lte: maxPrice ? Number(maxPrice) : undefined,

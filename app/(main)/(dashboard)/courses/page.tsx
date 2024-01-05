@@ -13,14 +13,14 @@ import { getCourses } from "@/lib/fetcher/course";
 
 interface CoursePageProps {
   searchParams: {
-    [key: string]: string | string[] | undefined;
+    [key: string]: string | undefined;
   };
 }
 
 const CoursePage = async ({ searchParams }: CoursePageProps) => {
   const user = await getCurrentUser();
 
-  const { page, per_page, sort, categories, price_range } =
+  const { page, per_page, sort, category, price_range } =
     coursesSearchParamsSchema.parse(searchParams);
 
   // Courses transaction
@@ -38,7 +38,7 @@ const CoursePage = async ({ searchParams }: CoursePageProps) => {
     limit,
     offset,
     sort,
-    categories,
+    category,
     price_range,
   });
 

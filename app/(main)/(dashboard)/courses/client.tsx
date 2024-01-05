@@ -31,7 +31,7 @@ const CoursePageClient = ({
   // Search params
   const page = searchParams?.get("page") ?? "1";
   const per_page = searchParams?.get("per_page") ?? "8";
-  const categoriesParam = searchParams?.get("categories");
+  const categoryParam = searchParams?.get("category");
 
   // Create query string
   const createQueryString = useCallback(
