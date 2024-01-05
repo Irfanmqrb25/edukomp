@@ -1,3 +1,9 @@
+import Link from "next/link";
+
+import Wrapper from "../_components/wrapper";
+import CategoriesCard from "../_components/card/categories-card";
+import TopCourseCarousel from "../_components/carousel/top-course-carousel";
+
 import {
   Building2,
   Code2,
@@ -5,12 +11,24 @@ import {
   Paintbrush2,
   PercentSquare,
 } from "lucide-react";
-import CategoriesCard from "../_components/card/categories-card";
-import Wrapper from "../_components/wrapper";
+import db from "@/lib/db";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
-const DahsboardPage = () => {
+const DahsboardPage = async () => {
+  const topCourses = await db.course.findMany({
+    where: {
+      isPremium: true,
+    },
+    take: 6,
+  });
+
+  const freeCourses = await db.course.findMany({
+    where: {
+      isPremium: false,
+    },
+    take: 6,
+  });
+
   const categoriesData = [
     {
       name: "Graphics Design",
@@ -74,10 +92,17 @@ const DahsboardPage = () => {
             ))}
           </div>
         </div>
-        <div>
+        <div className="w-full space-y-4">
+          <h5 className="font-semibold text-lg md:text-xl text-muted-foreground">
+            For You
+          </h5>
+          <TopCourseCarousel topCourses={freeCourses} />
+        </div>
+        <div className="w-full space-y-4">
           <h5 className="font-semibold text-lg md:text-xl text-muted-foreground">
             Top Course This Week
           </h5>
+          <TopCourseCarousel topCourses={topCourses} />
         </div>
       </div>
     </Wrapper>
