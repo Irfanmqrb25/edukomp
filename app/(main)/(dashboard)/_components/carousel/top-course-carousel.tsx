@@ -23,7 +23,7 @@ const TopCourseCarousel = ({ topCourses }: TopCourseCarouselProps) => {
       }}
       className="w-full"
     >
-      <div className="space-x-2 flex items-center justify-center lg:justify-end">
+      <div className="hidden space-x-2 lg:flex items-center justify-center lg:justify-end">
         <CarouselPrevious className="static " />
         <CarouselNext className="static " />
       </div>
@@ -34,6 +34,10 @@ const TopCourseCarousel = ({ topCourses }: TopCourseCarouselProps) => {
           </CarouselItem>
         ))}
       </CarouselContent>
+      <div className="lg:hidden space-x-2 flex items-center justify-center lg:justify-end">
+        <CarouselPrevious className="static mt-6" />
+        <CarouselNext className="static mt-6" />
+      </div>
     </Carousel>
   );
 };

@@ -34,31 +34,31 @@ const DahsboardPage = async () => {
       name: "Graphics Design",
       imageUrl: "/categories-illustration-design.svg",
       className: "bg-[#F18BA0]",
-      icon: <Paintbrush2 size={35} />,
+      icon: <Paintbrush2 size={35} className="md:w-20 md:h-20" />,
     },
     {
       name: "UI/UX Design",
       imageUrl: "/categories-illustration-uiux.svg",
       className: "bg-[#FF7170]",
-      icon: <Figma size={35} />,
+      icon: <Figma size={35} className="md:w-20 md:h-20" />,
     },
     {
       name: "Business Management",
       imageUrl: "/categories-illustration-business.svg",
       className: "bg-[#9383EE]",
-      icon: <Building2 size={35} />,
+      icon: <Building2 size={35} className="md:w-20 md:h-20" />,
     },
     {
       name: "Software Development",
       imageUrl: "/categories-illustration-development.svg",
       className: "bg-[#6299F4]",
-      icon: <Code2 size={35} />,
+      icon: <Code2 size={35} className="md:w-20 md:h-20" />,
     },
     {
       name: "Digital Marketing",
       imageUrl: "/categories-illustration-marketing.svg",
       className: "bg-[#45CBCA]",
-      icon: <PercentSquare size={35} />,
+      icon: <PercentSquare size={35} className="md:w-20 md:h-20" />,
     },
   ];
 
@@ -85,7 +85,7 @@ const DahsboardPage = async () => {
               <Link
                 key={category.name}
                 href={`/courses?category=${category.name.toLowerCase()}`}
-                className={cn("p-2 rounded-md", category.className)}
+                className={cn("p-2 md:p-4 rounded-md", category.className)}
               >
                 {category.icon}
               </Link>

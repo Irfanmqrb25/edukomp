@@ -23,7 +23,7 @@ const CategoriesCard = ({
   return (
     <Card
       className={cn(
-        "p-4 flex flex-col w-full items-center justify-center gap-4 hover:-translate-y-1 transition-all duration-500 group cursor-pointer text-white shadow-sm",
+        "py-4 px-3 flex flex-col w-full items-center justify-center gap-4 hover:-translate-y-1 transition-all duration-500 group cursor-pointer text-white shadow-sm",
         className
       )}
       onClick={() => router.push(href)}
@@ -35,7 +35,7 @@ const CategoriesCard = ({
         alt="company image"
         className="object-cover grayscale group-hover:-translate-x-2 transition-all duration-500 group-hover:grayscale-0"
       />
-      <p className="font-medium">{name}</p>
+      <p className="font-medium lg:text-center xl:text-start">{name}</p>
     </Card>
   );
 };
