@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { CheckCircle2, Copy } from "lucide-react";
+
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+
+import { toast } from "sonner";
+import { CheckCircle2, Copy } from "lucide-react";
 
 interface CopyLinkProps {
   src: string;
@@ -15,6 +18,7 @@ const CopyLink: React.FC<CopyLinkProps> = ({ src }) => {
   function copyToClipboard() {
     setIsCopied(true);
     navigator.clipboard.writeText(src);
+    toast.success("Link copied to clipboard");
     setTimeout(() => {
       setIsCopied(false);
     }, 2000);

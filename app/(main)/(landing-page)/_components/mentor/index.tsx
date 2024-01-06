@@ -8,9 +8,11 @@ const Mentor = () => {
         <div className="space-y-2">
           <h2 className="font-bold text-3xl">Meet Our Mentors</h2>
           <p className="lg:w-1/2 font-medium text-muted-foreground">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            dolore voluptates maiores voluptate quis et omnis nostrum, error
-            commodi ut distinctio ipsum magnam.
+            Discover the inspiring individuals who guide and mentor our
+            community. With diverse expertise and a passion for helping others
+            succeed, our mentors are dedicated to supporting your growth. Learn
+            from the best as you embark on a journey of knowledge and skill
+            development.
           </p>
         </div>
         <MentorCarousel />

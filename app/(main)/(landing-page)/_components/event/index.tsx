@@ -9,8 +9,10 @@ const Event = () => {
       <div className="space-y-2">
         <h2 className="font-bold text-3xl">Recent Events</h2>
         <p className="lg:w-1/2 font-medium text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere dolore
-          voluptates maiores voluptate quis et omnis nostrum.
+          Stay updated with our latest happenings and noteworthy events. Explore
+          exciting activities and engaging discussions that contribute to
+          personal and professional growth. Join us as we create meaningful
+          experiences and build a vibrant community together.
         </p>
       </div>
       <div className="flex flex-col gap-y-4">

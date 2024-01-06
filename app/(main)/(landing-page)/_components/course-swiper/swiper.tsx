@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/carousel";
 
 import { cn } from "@/lib/utils";
-import { recommendedCourses } from "@/data/course";
+import { Course } from "@prisma/client";
 
-const SwiperClient = () => {
+const SwiperClient = ({ courses }: { courses: Course[] }) => {
   const [onSelectedTab, setOnSelectedTab] = useState("design");
 
   const tabItems = [
@@ -40,24 +40,24 @@ const SwiperClient = () => {
     },
   ];
 
-  const softwareCourses = recommendedCourses.filter(
-    (course) => course.type === "software development"
+  const softwareCourses = courses.filter(
+    (course) => course.category === "Software Development"
   );
 
-  const designCourses = recommendedCourses.filter(
-    (course) => course.type === "design"
+  const designCourses = courses.filter(
+    (course) => course.category === "Graphics Design"
   );
 
-  const digitalMarketingCourses = recommendedCourses.filter(
-    (course) => course.type === "digital marketing"
+  const digitalMarketingCourses = courses.filter(
+    (course) => course.category === "Digital Marketing"
   );
 
-  const uiUxCourses = recommendedCourses.filter(
-    (course) => course.type === "ui/ux"
+  const uiUxCourses = courses.filter(
+    (course) => course.category === "UI/UX Design"
   );
 
-  const businessManagementCourses = recommendedCourses.filter(
-    (course) => course.type === "business management"
+  const businessManagementCourses = courses.filter(
+    (course) => course.category === "Business Management"
   );
 
   return (

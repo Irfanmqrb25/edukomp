@@ -10,7 +10,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
-import { Course } from "@/types";
+import { Course } from "@prisma/client";
 import { MonitorPlay } from "lucide-react";
 
 interface CardCourseProps {
@@ -23,7 +23,7 @@ const CardCourse: React.FC<CardCourseProps> = ({ course }) => {
       <CardHeader className="p-0 border-b">
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={course.image}
+            src={course.imageUrl ?? ""}
             alt={course.title}
             className="w-full h-full object-cover rounded-t-md"
             fill
@@ -36,7 +36,7 @@ const CardCourse: React.FC<CardCourseProps> = ({ course }) => {
           <Avatar className="w-6 h-6">
             <AvatarImage src="https://github.com/shadcn.png" />
           </Avatar>
-          <p className="font-medium">Shadcn</p>
+          <p className="font-medium">edukomp</p>
         </div>
         <p className="line-clamp-1">{course.description}</p>
       </CardContent>

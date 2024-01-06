@@ -17,37 +17,37 @@ const MentorCarousel = () => {
     {
       id: 1,
       name: "Alex Smith",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-ui.avif",
       role: "UI/UX Designer",
     },
     {
       id: 2,
       name: "Russel Carter",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-se.avif",
       role: "Senior Developer",
     },
     {
       id: 3,
       name: "Harry Miller",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-gd.avif",
       role: "Graphics Designer",
     },
     {
       id: 4,
       name: "Alex Smith",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-dm.avif",
       role: "Digital Marketing",
     },
     {
       id: 5,
       name: "Adam Austin",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-fe.avif",
       role: "Frontend Developer",
     },
     {
       id: 6,
       name: "George Brown",
-      image: "https://github.com/shadcn.png",
+      image: "/mentor/mentor-bm.avif",
       role: "Business Analyst",
     },
   ];
