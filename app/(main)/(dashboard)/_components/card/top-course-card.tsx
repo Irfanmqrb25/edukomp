@@ -22,7 +22,7 @@ const TopCourseCard = ({ course }: TopCourseCardProps) => {
     >
       <AspectRatio ratio={4 / 3}>
         <Image
-          src={course.imageUrl ?? ""}
+          src={course.imageUrl ?? "/product-placeholder.webp"}
           alt="course image"
           fill
           objectFit="cover"

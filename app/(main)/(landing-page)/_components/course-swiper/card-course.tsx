@@ -23,7 +23,7 @@ const CardCourse: React.FC<CardCourseProps> = ({ course }) => {
       <CardHeader className="p-0 border-b">
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={course.imageUrl ?? ""}
+            src={course.imageUrl ?? "/product-placeholder.webp"}
             alt={course.title}
             className="w-full h-full object-cover rounded-t-md"
             fill

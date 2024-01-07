@@ -32,7 +32,7 @@ const CategoriesCard = ({
         src={imageUrl}
         width={100}
         height={100}
-        alt="company image"
+        alt="category image"
         className="object-cover grayscale group-hover:-translate-x-2 transition-all duration-500 group-hover:grayscale-0"
       />
       <p className="font-medium lg:text-center xl:text-start">{name}</p>

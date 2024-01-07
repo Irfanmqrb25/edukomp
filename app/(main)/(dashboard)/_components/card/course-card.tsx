@@ -74,7 +74,7 @@ const CourseCard = ({ course, user }: CourseCardProps) => {
       <CardHeader className="p-0 rounded-2xl overflow-hidden shadow-md w-full h-[160px] lg:h-[130px] lg:w-[160px] hover:-translate-y-1 hover:shadow-lg border transition-all duration-500">
         <Image
           alt={course.title}
-          src={course.imageUrl ?? "/blank-user.jpg"}
+          src={course.imageUrl ?? "/product-placeholder.webp"}
           width={160}
           height={130}
           className="object-cover h-full w-full"
