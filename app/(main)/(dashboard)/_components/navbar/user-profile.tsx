@@ -6,8 +6,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
@@ -36,10 +34,6 @@ const UserProfile = ({ user }: UserProfileProps) => {
         side="bottom"
         align="end"
       >
-        <DropdownMenuLabel>
-          <p className="text-xs font-normal text-gray-400">{user?.email}</p>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-neutral-100" />
         <DropdownMenuGroup>
           <Link href="/profile">
             <DropdownMenuItem className="cursor-pointer">
@@ -48,7 +42,6 @@ const UserProfile = ({ user }: UserProfileProps) => {
             </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
-        <DropdownMenuSeparator className="bg-neutral-100" />
         <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
           <DoorOpen className="w-4 h-4 mr-2" />
           <span className="text-sm font-medium">Log out</span>
