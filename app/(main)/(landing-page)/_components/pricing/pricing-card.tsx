@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 import { Separator } from "@/components/ui/separator";
 import {
@@ -8,12 +12,42 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { CheckCircle2, XCircle } from "lucide-react";
+import { User } from "@prisma/client";
 
-const PricingCard = () => {
+interface PricingCardProps {
+  user: User;
+  action: () => Promise<void>;
+}
+
+const PricingCard = ({ user, action }: PricingCardProps) => {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const isPremium = user?.isPremium;
+
+  const handleSubscribe = async () => {
+    if (isPremium) {
+      return toast.info("You are already a premium user");
+    }
+    if (!user) {
+      return router.push("/sign-in");
+    }
+    startTransition(async () => {
+      toast.promise(action, {
+        loading: "Subscribing...",
+        success: () => {
+          router.push("/dashboard");
+          return "Subscribed!";
+        },
+        error: "Something went wrong",
+      });
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4 md:flex-row">
       <Card className="w-full border-dashed">
@@ -36,7 +70,7 @@ const PricingCard = () => {
             </div>
           </div>
           <Link
-            href="/sign-in"
+            href="/dashboard"
             className={cn(
               buttonVariants({ variant: "default", size: "sm" }),
               "w-fit rounded-full"
@@ -91,15 +125,13 @@ const PricingCard = () => {
               <p className="text-4xl font-semibold">250.000</p>
             </div>
           </div>
-          <Link
-            href="/sign-in"
-            className={cn(
-              buttonVariants({ variant: "default", size: "sm" }),
-              "w-fit rounded-full"
-            )}
+          <Button
+            onClick={handleSubscribe}
+            className="w-fit rounded-full"
+            disabled={isPending}
           >
             Subscribe
-          </Link>
+          </Button>
           <CardContent className="flex flex-col gap-4 p-0 pt-10">
             <div className="flex items-center justify-between">
               <p className="text-sm">Free class access</p>
@@ -147,15 +179,13 @@ const PricingCard = () => {
               <p className="text-4xl font-semibold">500.000</p>
             </div>
           </div>
-          <Link
-            href=""
-            className={cn(
-              buttonVariants({ variant: "default", size: "sm" }),
-              "w-fit rounded-full"
-            )}
+          <Button
+            onClick={handleSubscribe}
+            className="w-fit rounded-full"
+            disabled={isPending}
           >
             Subscribe
-          </Link>
+          </Button>
           <CardContent className="flex flex-col gap-4 p-0 pt-10">
             <div className="flex items-center justify-between">
               <p className="text-sm">Free class access</p>

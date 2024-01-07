@@ -36,7 +36,7 @@ const AboutPage = () => {
                   alt="gallery photo 1"
                   fill
                   className="w-full h-full object-cover rounded-t-sm"
-                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D"
+                  src="/blank-user.jpg"
                 />
               </AspectRatio>
             </CardHeader>
