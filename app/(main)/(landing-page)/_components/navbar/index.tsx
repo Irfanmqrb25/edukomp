@@ -11,9 +11,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full h-20 z-10 px-4 md:px-8 lg:px-36 flex items-center justify-between bg-white dark:bg-[#1A1A1A]">
       <div className="flex items-center">
-        <h1 className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold">
           edu<span className="text-brand">Komp</span>
-        </h1>
+        </Link>
         <GraduationCap className="text-brand" />
       </div>
       <MobileToggle />

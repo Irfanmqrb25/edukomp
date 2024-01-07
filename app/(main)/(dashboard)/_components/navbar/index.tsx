@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import UserProfile from "./user-profile";
 import MobileSidebar from "./mobile-sidebar";
 import { Separator } from "@/components/ui/separator";
@@ -12,9 +14,9 @@ const DashboardNavbar = async () => {
   return (
     <nav className="fixed top-0 w-full h-20 z-10 pl-4 lg:pl-6 pr-4 lg:pr-16 flex justify-between items-center border-b bg-background">
       <div className="flex items-center">
-        <h1 className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold">
           edu<span className="text-brand">Komp</span>
-        </h1>
+        </Link>
         <GraduationCap className="text-brand" />
       </div>
       <div className="hidden lg:flex items-center gap-6">
