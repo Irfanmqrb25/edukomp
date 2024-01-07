@@ -11,8 +11,15 @@ import { cn } from "@/lib/utils";
 import { menu } from "../sidebar/menu";
 import { signOut } from "next-auth/react";
 import { AlignLeft, DoorOpen, GraduationCap } from "lucide-react";
+import { User } from "@prisma/client";
+import Link from "next/link";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
-const MobileSidebar = () => {
+interface MobileSidebarProps {
+  user: User;
+}
+
+const MobileSidebar = ({ user }: MobileSidebarProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -59,6 +66,20 @@ const MobileSidebar = () => {
                   <span>{item.name}</span>
                 </li>
               ))}
+              <li
+                className="flex items-center gap-2.5 px-4 py-2"
+                onClick={() => {
+                  setIsOpen(false);
+                  router.push("/profile");
+                }}
+              >
+                <Avatar className="w-6 h-6">
+                  <AvatarImage src={user?.image || "/blank-user.jpg"} />
+                </Avatar>
+                <p className="font-medium text-sm text-muted-foreground">
+                  Profile
+                </p>
+              </li>
             </ul>
           </div>
           <div className="mb-12 flex flex-col gap-6">

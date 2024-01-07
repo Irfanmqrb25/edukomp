@@ -1,10 +1,10 @@
-import React from "react";
 import UserProfile from "./user-profile";
-import getCurrentUser from "@/actions/getCurrentUser";
+import MobileSidebar from "./mobile-sidebar";
 import { Separator } from "@/components/ui/separator";
 import ThemeToggle from "@/app/(main)/(landing-page)/_components/navbar/theme-toggle";
+
 import { GraduationCap } from "lucide-react";
-import MobileSidebar from "./mobile-sidebar";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const DashboardNavbar = async () => {
   const user = await getCurrentUser();
@@ -22,7 +22,7 @@ const DashboardNavbar = async () => {
         <Separator orientation="vertical" className="h-8 w-[1.4px]" />
         <ThemeToggle position="navbar" />
       </div>
-      <MobileSidebar />
+      <MobileSidebar user={user!} />
     </nav>
   );
 };

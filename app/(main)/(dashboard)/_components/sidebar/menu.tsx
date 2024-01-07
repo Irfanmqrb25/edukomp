@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { DoorOpen, Home, Layers3, Newspaper } from "lucide-react";
+import { Home, Layers3, Newspaper } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { User } from "@prisma/client";
 
 export const menu = [
   {
