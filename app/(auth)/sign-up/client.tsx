@@ -44,8 +44,6 @@ interface RegisterFormProps {
 }
 
 const RegisterForm = ({ action }: RegisterFormProps) => {
-  const router = useRouter();
-
   const form = useForm<Inputs>({
     resolver: zodResolver(authSignUpSchema),
     defaultValues: {
@@ -57,9 +55,6 @@ const RegisterForm = ({ action }: RegisterFormProps) => {
 
   const handleSubmit = (data: Inputs) => {
     action(data);
-    router.refresh();
-    router.push("/sign-in");
-    form.reset();
     toast.success("Account created");
   };
 

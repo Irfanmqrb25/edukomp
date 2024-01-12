@@ -12,6 +12,7 @@ import RegisterForm, { Inputs } from "./client";
 
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
+import { redirect } from "next/navigation";
 
 const SignUpPage = () => {
   const handleRegister = async (data: Inputs) => {
@@ -26,6 +27,8 @@ const SignUpPage = () => {
         hashedPassword: hashedPassword,
       },
     });
+
+    redirect("/sign-in");
   };
 
   return (

@@ -80,7 +80,7 @@ const EditProfileForm = ({ user }: EditProfileFormProps) => {
               Premium
             </div>
           ) : (
-            <div className="px-2 py-1 rounded-full bg-muted text-[11px] md:text-sm font-medium">
+            <div className="px-2 py-1 rounded-full bg-muted text-[11px] md:text-sm font-medium w-fit">
               Free
             </div>
           )}

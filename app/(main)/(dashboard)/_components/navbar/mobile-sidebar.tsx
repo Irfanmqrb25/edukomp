@@ -4,16 +4,15 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ThemeToggle from "@/app/(main)/(landing-page)/_components/navbar/theme-toggle";
 
 import { cn } from "@/lib/utils";
+import { User } from "@prisma/client";
 import { menu } from "../sidebar/menu";
 import { signOut } from "next-auth/react";
 import { AlignLeft, DoorOpen, GraduationCap } from "lucide-react";
-import { User } from "@prisma/client";
-import Link from "next/link";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 interface MobileSidebarProps {
   user: User;

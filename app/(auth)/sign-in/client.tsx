@@ -61,7 +61,7 @@ const LoginForm = () => {
       }
 
       if (callback?.error) {
-        toast.error("Something went wrong");
+        toast.error("Invalid credentials");
         console.log(callback.error);
       }
     });

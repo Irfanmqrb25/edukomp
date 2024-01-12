@@ -38,7 +38,7 @@ const UploadThingInput: React.FC<UploadThingInputProps> = ({
         }}
         content={{
           button({ ready, isUploading = true, uploadProgress }) {
-            if (ready) return "Upload New Image";
+            if (ready) return "Change Image";
             if (isUploading) return `Uploading... ${uploadProgress}%`;
 
             return "Getting ready...";
