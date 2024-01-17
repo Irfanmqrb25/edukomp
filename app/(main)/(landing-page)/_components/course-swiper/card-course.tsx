@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/card";
 
 import { Course } from "@prisma/client";
-import { MonitorPlay } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface CardCourseProps {
   course: Course;
@@ -41,10 +42,12 @@ const CardCourse: React.FC<CardCourseProps> = ({ course }) => {
         <p className="line-clamp-1">{course.description}</p>
       </CardContent>
       <CardFooter className="p-0 px-3 pb-3">
-        <Button size="sm" variant="primary" className="w-full">
-          <MonitorPlay className="w-5 h-5 mr-2" />
-          See Course
-        </Button>
+        <Link className="w-full" href={`/courses/${course.id}`}>
+          <Button size="sm" variant="primary" className="w-full">
+            See Detail
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
